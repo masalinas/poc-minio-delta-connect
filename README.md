@@ -1,6 +1,36 @@
 # Description
 Integrate Minio with Spark Delta Lake and Spark Connect. Test with a Spark Driver
 
+## Python Spark Master and Worker dependencies
+We will use the Spark 3.5.0 using the [Spark Docker Image](https://hub.docker.com/_/spark): `spark:3.5.0-python3`
+
+## Python Spark Client dependencies
+We must install pyspark 3.5.0 aligned with Spark Docker Image 3.5.0 including these dependencies:
+
+```
+pip install pyspark==3.5.0
+pip install pandas
+pip install pyarrow
+pip install googleapis-common-protos
+pip install grpcio 
+pip install grpcio-tools
+pip install grpcio-status
+pip install protobuf
+```
+
+The dependencies Google gRPC because the protocol used by the Sparck Clients and the Spark Master is using gRPC 
+```
+googleapis-common-protos
+grpcio
+grpcio-tools
+grpcio-status
+protobuf
+```
+
+The dependency `pyarrow` because the response from Spark Master is using gRPC throw pyarrow to acelerate this response
+
+And finally `pandas` to convert Spark Dataframe response to Pandas structures to be easy read
+
 ## Steps
 
 You must start these services
@@ -69,18 +99,6 @@ http://localhost:8081/
 ```
 
 ![Spark Worker UI](./images/spark_worker.png "Spark Worker UI")
-
-## Python Spark Client dependencies
-```
-pip install pyspark==3.5.0
-pip install pandas
-pip install pyarrow
-pip install googleapis-common-protos
-pip install grpcio 
-pip install grpcio-tools
-pip install grpcio-status
-pip install protobuf
-```
 
 ## Links 
 - [Spark Docker Hub])https://hub.docker.com/_/spark)
