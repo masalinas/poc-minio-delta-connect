@@ -35,7 +35,8 @@ And finally `pandas` to convert Spark Dataframe response to Pandas structures to
 
 You must start these services
 
-Start Minio Service
+Start Minio Service. And create a bucket called in my case `genomic`. Spark Delta Lake create the table, but not the bucket, you must create manually from UI or from Python (You must install minio depenedies for it).
+
 ```
 $ docker run -d \
   --name spark-minio \
