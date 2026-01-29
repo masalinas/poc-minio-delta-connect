@@ -27,7 +27,7 @@ $ docker run -d \
   -p 7077:7077 \
   -p 8080:8080 \
   -p 15002:15002 \
-  -v ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf \
+  -v "$PWD/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf" \
   spark:3.5.0-python3-connect \
   bash -c "
     /opt/spark/sbin/start-master.sh && \
@@ -42,7 +42,7 @@ $ docker run -d \
     --name spark-worker \
     --network spark-net \
     -p 8081:8081 \
-    -v ./spark-defaults.conf:/opt/spark/conf/spark-defaults.conf \
+    -v "$PWD/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf" \
     spark:3.5.0-python3 \
     bash -c "
       /opt/spark/sbin/start-worker.sh \

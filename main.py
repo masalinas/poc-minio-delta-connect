@@ -2,7 +2,11 @@ from datetime import datetime, date
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
 
-builder = SparkSession.builder.appName("spark_connect_app").remote("sc://localhost:15002")
+builder = SparkSession.builder.appName("spark_connect_app") \
+    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
+    .remote("sc://localhost:15002")
+
 spark = builder.getOrCreate()
 
 # Create a DataFrame

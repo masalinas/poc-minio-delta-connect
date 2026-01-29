@@ -1,0 +1,15 @@
+beautifulsoup4==4.14.3
+googleapis-common-protos==1.72.0
+grpcio==1.76.0
+grpcio-status==1.76.0
+grpcio-tools==1.76.0
+numpy==2.4.1
+pandas==3.0.0
+protobuf==6.33.4
+py4j==0.10.9.7
+pyarrow==23.0.0
+pyspark==3.5.0
+python-dateutil==2.9.0.post0
+six==1.17.0
+soupsieve==2.8.3
+typing_extensions==4.15.0
