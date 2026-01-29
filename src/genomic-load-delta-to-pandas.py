@@ -20,26 +20,23 @@ df = spark.createDataFrame(
     ]
 )
 
-# Write Delta Table to Minio
-#df.write.mode("overwrite").format("delta").save("s3a://delta-bucket/my_table")
-
-# Read Delta Table from Minio
 start_time = time.process_time()
-#df = spark.read.format("delta").load("s3a://delta-bucket/my_table")
 
+# Read Delta Table from Minio using spark connect
 df = (
     spark.read.format("delta")
     .load("s3a://genomic/gene-expression")
     .where(col("sample_id") == "TCGA-E7-A7DV")
 )
 
-# Display Delta Table
 df.show()
 
+# convert to Pandas
 pdf = df.toPandas()
 print(pdf.shape)
-end_time= time.process_time()
 
+end_time= time.process_time()
 print(end_time - start_time, " seconds")
 
+# Stop spark
 spark.stop()
