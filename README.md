@@ -107,7 +107,7 @@ http://localhost:8081/
 ![Spark Worker UI](./images/spark_worker.png "Spark Worker UI")
 
 ## Notes
-Actually exist a `spark-client` [python package](https://pypi.org/project/pyspark-client/) implement only Spark Connect. Maybe unistalling pyspark and use this light version could works too using Spark Connect clients delegating all work to Spark Master.
+Actually exist a `spark-client` [python package](https://pypi.org/project/pyspark-client/) implement only Spark Connect, but the minimum version is 4.0.0. Unistalling pyspark 3.5.0 and use this light version could works. But you must refactor the Dockerfile to get the compatible jar files with this new Spark Connect 4.0.0 version.
 
 ## Links 
 - [Spark Docker Hub](https://hub.docker.com/_/spark)
