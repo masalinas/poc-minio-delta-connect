@@ -100,5 +100,8 @@ http://localhost:8081/
 
 ![Spark Worker UI](./images/spark_worker.png "Spark Worker UI")
 
+## Notes
+Actually exist a `spark-client` implement only Spark Connect. Maybe unistalling pyspark and use this light version could works too using Spark Connect clients delegating all work to Spark Master.
+
 ## Links 
 - [Spark Docker Hub])https://hub.docker.com/_/spark)
