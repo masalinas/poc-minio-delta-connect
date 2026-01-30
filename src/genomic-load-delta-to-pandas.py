@@ -1,7 +1,5 @@
 import time
-from datetime import datetime, date
 from pyspark.sql import SparkSession
-from pyspark.sql import Row
 from pyspark.sql.functions import col
 
 start_time = time.process_time()
