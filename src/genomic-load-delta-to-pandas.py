@@ -4,6 +4,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql import Row
 from pyspark.sql.functions import col
 
+start_time = time.process_time()
+
 # Create Remote Spark Session from Spark Connect
 builder = SparkSession.builder.appName("spark_connect_app") \
     .remote("sc://localhost:15002")
@@ -11,8 +13,6 @@ builder = SparkSession.builder.appName("spark_connect_app") \
 spark = builder.getOrCreate()
 
 # Read Delta Table from Minio using spark connect
-start_time = time.process_time()
-
 df = (
     spark.read.format("delta")
     .load("s3a://genomic/gene-expression")
@@ -23,10 +23,10 @@ df.show()
 
 # convert to Pandas
 pdf = df.toPandas()
-print(pdf.shape)
+print("Dataset shape: " + str(pdf.shape))
 
 end_time= time.process_time()
-print(end_time - start_time, " seconds")
+print("Time spent: " + str(end_time - start_time) + " seconds")
 
 # Stop spark
 spark.stop()
