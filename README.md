@@ -38,6 +38,8 @@ You must start these services
 - Start Minio Service. And create a bucket called in my case `genomic`. Spark Delta Lake create the table, but not the bucket, you must create manually from Minio UI or from Python (In this case you can use mc minio CLI or from Python using minio SDK).
 
   ```
+  $ docker network create spark-net
+  
   $ docker run -d \
     --name spark-minio \
     --network spark-net \
